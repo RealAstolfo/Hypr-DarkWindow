@@ -150,13 +150,13 @@ APICALL EXPORT PLUGIN_DESCRIPTION_INFO PLUGIN_INIT(HANDLE handle)
 
     g_pConfigManager->reload();
 
-    /*g_Callbacks.push_back(HyprlandAPI::registerCallbackDynamic(
-        PHANDLE, "closeWindow",
+    g_Callbacks.push_back(HyprlandAPI::registerCallbackDynamic(
+        PHANDLE, "destroyWindow",
         [&](void* self, SCallbackInfo&, std::any data) {
             std::lock_guard<std::mutex> lock(g_ShaderMutex);
             g_WindowShader.ForgetWindow(std::any_cast<PHLWINDOW>(data));
         }
-    ));*/
+    ));
     g_Callbacks.push_back(HyprlandAPI::registerCallbackDynamic(
         PHANDLE, "windowUpdateRules",
         [&](void* self, SCallbackInfo&, std::any data) {
